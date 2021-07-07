@@ -111,7 +111,7 @@ function transform(obj){
   let newPointStructure = {}
   for (key in oldPointStructure){
     for (let i = 0; i < oldPointStructure[key].length; i ++){
-      newPointStructure[oldPointStructure[key][i]] = key;
+      newPointStructure[oldPointStructure[key][i]] = parseInt(key);
     }
     }
     newPointStructure = lowerCaseKeys(newPointStructure)
