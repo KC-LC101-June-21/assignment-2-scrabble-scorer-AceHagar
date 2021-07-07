@@ -46,7 +46,7 @@ let simpleScore = function(word){
   }
   return letterPoints;
 };
-//console.log(simpleScore(initialPrompt()))
+
 let vowelBonusScore = function(word){
   word = word.toUpperCase();
   let letterPoints = 0;
@@ -60,11 +60,16 @@ let vowelBonusScore = function(word){
   }
   return letterPoints;
 };
+const lowerCaseKeys = obj =>
+  Object.keys(obj).reduce((acc, key) => {
+    acc[key.toLowerCase()] = obj[key];
+    return acc;
+  }, {});
 
 let newPointStructure = transform(oldPointStructure);
 
 function scrabbleScore(word){
-  word = word.toUpperCase();
+  word = word.toLowerCase();
   let letterPoints = 0;
   for (let i = 0; i < word.length; i ++){
     for(const letter in newPointStructure){
@@ -109,6 +114,7 @@ function transform(obj){
       newPointStructure[oldPointStructure[key][i]] = key;
     }
     }
+    newPointStructure = lowerCaseKeys(newPointStructure)
     return newPointStructure;
 };
 
